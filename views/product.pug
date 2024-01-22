@@ -1,0 +1,18 @@
+extends ./layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/product.css")
+
+
+block content 
+    main.product-body
+        form.add-product-form(action="/admin/add-product" method="POST")
+            h3 Add a product
+            input.add-product-entry(type="text" placeholder="Enter a product name" name="name" required)
+            textarea.product__description(name="description" placeholder="Describe the product" required id="description" cols="30" rows="10" maxLength="120")
+            input.add-product-entry(type="text" placeholder="Product Price" required name="price")
+            input.add-product-entry(type="text" placeholder="Product Image Url" required name="image")
+            button.add-product-btn Add Product
+
+
+
