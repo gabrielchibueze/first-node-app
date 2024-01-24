@@ -1,39 +1,3 @@
-body{
-    margin: 0px;
-    padding: 0px;
-    font-family: sans-serif;
-}
-
-.main-header{
-    background-color: green;
-    width: 100%;
-}
-.header-list{
-    display: flex;
-    align-self: center;
-    margin: 0px;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-    height: 4rem;
-}
-
-
-.header-list-items{
-    cursor: pointer;
-}
-
-.header-list-items > a{
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-}
-
- .header-list-items > a:hover{
-    color: yellow;
-    text-decoration: underline
-    
-}
 
 .product-body{
     margin: 2.5rem;
@@ -72,6 +36,8 @@ body{
 .product__description{
     padding: 0.5rem;
     line-height: 1.5;
+    height: 100px;
+    width: 100%
 }
 
 .page-not-found{
@@ -90,8 +56,4 @@ body{
     background-color: cadetblue;
     color: blueviolet;
     font-weight: bold;
-}
-.header-list-items > .active{
-    color: yellow;
-    text-decoration: underline;
 }

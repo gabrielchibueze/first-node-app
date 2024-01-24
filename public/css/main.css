@@ -1,0 +1,44 @@
+html {
+    width: 100vw;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    width: 100vw
+}
+
+.main-header{
+    background-color: green;
+    /* width: 100%; */
+}
+.header-list{
+    display: flex;
+    align-self: center;
+    margin: 0px;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    height: 4rem;
+}
+
+
+.header-list-items{
+    cursor: pointer;
+}
+
+.header-list-items > a{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+ .header-list-items > a:hover{
+    color: yellow;
+    text-decoration: underline
+    
+}
+.header-list-items > .active{
+    color: yellow;
+    text-decoration: underline;
+}
