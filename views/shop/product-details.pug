@@ -1,0 +1,19 @@
+extends ../layout/layout.pug
+
+block styles
+     link(rel="stylesheet" href="/css/shop.css")
+
+block content
+        div.product__main
+            h1 My Products
+            div.all__products
+                    div.product__details
+                        h2.product__title #{prods.name}
+                        img.product__img(src=prods.image)
+                        div.product__offers
+                            h3.product__price £#{prods.price}
+                            p.product__desc #{prods.description}
+                            form(action="/add-to-cart" method="post") 
+                                a(href="add-to-cart") 
+                                    button.product__add-to-cart Add to cart
+                                    input(type="hidden", name="productId", value=`${prods.id}`)

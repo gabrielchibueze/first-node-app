@@ -1,13 +1,12 @@
 extends ../layout/layout.pug
 
-block styles
-     link(rel="stylesheet" href="/css/shop.css")
-
+block styles 
+    link(rel="stylesheet", href="/css/product.css")
 block content
     if(prods.length > 0)
 
         div.product__main
-            h1 My Products
+            h1 Here are your orders
             div.all__products
                 each product in prods
                     div.product__details
@@ -16,7 +15,7 @@ block content
                         div.product__offers
                             h3.product__price £#{product.price}
                             p.product__desc #{product.description}
-                            button.product__add-to-cart Add to cart
+                            //- button.product__add-to-cart Add to cart
     else 
         main.shop-body
-            h1 No products available
+            h1 No Ordered products

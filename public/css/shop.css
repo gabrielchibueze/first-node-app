@@ -68,7 +68,7 @@ color: blueviolet;
     margin-left: 2rem;
 }
 
-.edit__delete {
+.edit__delete, .details__add-to-cart {
     display: flex;
     flex-direction: row;
     gap: 1.2rem;

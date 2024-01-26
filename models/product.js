@@ -8,6 +8,7 @@ module.exports = class Products{
         this.description = prods.description,
         this.price = prods.price,
         this.image = prods.image
+        this.id = Math.random().toString()
     }
 
     save(){
@@ -23,12 +24,37 @@ module.exports = class Products{
         })
     }
 
+    static saveUpdatedProduct(id, prod){
+        fs.readFile(p, (err, fileContent)=>{
+            let products = []
+            if(!err){
+                products = JSON.parse(fileContent)
+            }
+            const updatedProductIndex = products.findIndex(prod => prod.id === id);
+            products = [...products]
+            products[updatedProductIndex] = prod
+            fs.writeFile(p, JSON.stringify(products), (err)=>{
+                console.log(err)
+            })
+        })
+    }
+
     static fetchAll(cb){
         fs.readFile(p, (err, fileContent)=>{
             if(err){
                 return null
             }
             return cb(JSON.parse(fileContent))
+        })
+    }
+
+    static fetchProductDetails(id, cb){
+        fs.readFile(p, (err, fileContent)=>{
+            if(err){
+                return null
+            }
+            const product = JSON.parse(fileContent).find(prod => prod.id === id)
+            cb(product)
         })
     }
 

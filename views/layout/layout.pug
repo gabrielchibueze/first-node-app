@@ -14,12 +14,14 @@ html(lang="en")
                     a(href="/", class=(path==="/" ? "active" : "")) Shop
                 li.header-list-items
                     a(href=(path==="/cart" ? "#" : "/cart"), class=(path==="/cart" ? "active" : "")) Cart
+                p ||
                 li.header-list-items
                     a(href="/admin/products", class=(path==="/admin/products" ? "active" : "")) Products
                 li.header-list-items
                     a(href=(path==="/add-product" ? "#" : "/admin/add-product"), class=(path==="/add-product" ? "active" : "")) Add Product
                 li.header-list-items
-                    a(href=(path==="/orders" ? "#" : "/shop/orders"), class=(path==="shop/orders" ? "active" : "")) Orders
+                    a(href=(path==="/orders" ? "#" : "/admin/orders"), class=(path==="/admin/orders" ? "active" : "")) Orders
+
 
 
 
