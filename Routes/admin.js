@@ -9,6 +9,6 @@ router.get("/products", productController.getProductList)
 router.get("/orders", productController.getOrders)
 router.get("/edit-product/:productId", productController.editProduct)
 router.post("/save-edited-product/:productId", productController.saveEditedProduct)
-
+router.post("/delete-product", productController.deleteProduct)
 
 module.exports = router

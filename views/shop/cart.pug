@@ -7,15 +7,25 @@ block content
 
         div.product__main
             h1 My Cart
-            div.all__products
+            div.all__cart
                 each product in prods
-                    div.product__details
-                        h2.product__title #{product.name}
-                        img.product__img(src=product.image)
-                        div.product__offers
-                            h3.product__price £#{product.price}
-                            p.product__desc #{product.description}
-                            button.product__add-to-cart Add to cart
+                    div.cart__details
+                        img.cart__img(src=product.prod.image)
+                        div.cart__desccription 
+                            h3.cart__title #{product.prod.name}
+                            div.cart__offers
+                                h4.cart__price £#{product.prod.price}
+                                h4 ||
+                                h4.cart__price Qty: #{product.qty}
+                        div.detail__order 
+                            a(href=`/products/${product.prod.id}`)
+                                button.product__add-to-cart View details
+                            form(action=`/remove-cart/${product.prod.id}` method="post") 
+                                input(type="hidden", name="productId" value=`${product.prod.id}`)
+                                a(href="/remove-cart")
+                                    button.product__add-to-cart(type="submit") Remove
+            h4.total-price Total Price: £#{totalPrice}
+            button.place-order Place Order
     else 
         main.shop-body
-            h1 No products available
+            h1 Your cart is currently empty

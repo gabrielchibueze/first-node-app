@@ -42,3 +42,7 @@ body{
     color: yellow;
     text-decoration: underline;
 }
+
+.error-page{
+    margin: 2rem;
+}

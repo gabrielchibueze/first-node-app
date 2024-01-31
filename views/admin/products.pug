@@ -8,7 +8,7 @@ block content
     if(prods.length > 0)
 
         div.product__main
-            h1 My Products
+            h1 Products
             div.all__products
                 each product in prods
                     div.product__details
@@ -20,7 +20,19 @@ block content
                             div.edit__delete 
                                 a(href=`/admin/edit-product/${product.id}`)
                                     button.product__add-to-cart Edit
-                                button.product__add-to-cart Delete
+                                    
+                                form(action=`/admin/delete-product`, method="post") 
+                                    input(type="hidden", name="productId", value=`${product.id}`)
+                                    button.product__add-to-cart(type="submit") Delete
+                                    
+                            if(product.isDelete)                         
+                                div.delete-prompt
+                                    p Are you sure you want to delete this product ?
+                                    form(action=`/admin/delete/${product.id}`, method="post") 
+                                    div.edit__delete 
+                                        button.product__add-to-cart(type="submit") Yes 
+                                        button.product__add-to-cart() No
+                            
     else 
         main.shop-body
             h1 No products available

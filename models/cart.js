@@ -2,15 +2,19 @@ const fs = require("fs");
 const path = require("path");
 
 const p = path.join(path.dirname(process.mainModule.filename), "data", "cart.json")
-
+const writefile = (filename)=>{
+    return fs.writeFile(p, JSON.stringify(filename), err =>{
+        console.log(err)
+    })
+}
 module.exports = class Cart {
     static productCart(id, productPrice){
          // Acess the cart file component
 
-        fs.readFile(p, (err, fileComponent)=>{
+        fs.readFile(p, (err, fileContent)=>{
             let cart = {products: [], totalPrice: 0};
             if(!err){
-                cart = JSON.parse(fileComponent);
+                cart = JSON.parse(fileContent);
             };
             
         // analyse the cart file to see if the product to be added to cart is already exsiting by using the provided product Id
@@ -31,10 +35,34 @@ module.exports = class Cart {
                 cart.products = [...cart.products, updatedProduct]
             }
             cart.totalPrice = cart.totalPrice + (+productPrice)
-            fs.writeFile(p, JSON.stringify(cart), (err)=>{
-                console.log(err)
-            })
+            writefile(cart)
         }); 
     };
-    
+
+ 
+    static fetchCart(cb){
+        fs.readFile(p, (err, fileContent)=>{
+            let cart = JSON.parse(fileContent)
+            if(err){
+                cb(null)
+            }
+            else {
+                cb(cart)
+            }
+        })
+    }
+    static removeCart(id, productprice){
+        fs.readFile(p, (err, fileContent)=>{
+            if(err){
+                return
+            }
+            const cart = JSON.parse(fileContent);
+            let updatedCart = {...cart};
+            let removedItem = updatedCart.products.find(prod => prod.id === id)
+            updatedCart.products = updatedCart.products.filter(prod => prod.id !==id)
+            
+            updatedCart.totalPrice = updatedCart.totalPrice - productprice * removedItem.qty 
+            writefile(updatedCart)
+        })
+    }
 };

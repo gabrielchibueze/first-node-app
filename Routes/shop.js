@@ -10,8 +10,8 @@ router.get("/cart", shopController.getCarts)
 router.get("/products/:productId", shopController.getProductDetails)
 router.post("/add-to-cart", shopController.postCart)
 router.post("/shop-add-to-cart", shopController.postCart)
+router.post("/remove-cart/:productId", shopController.removeCart)
 
-// router.get("/", shopController.getProducts)
 
 
 module.exports = router;

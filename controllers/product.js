@@ -1,6 +1,7 @@
 const Products = require("../models/product");
 const productModel = require("../models/product")
 
+let deleteProduct;
 
 exports.getAddProduct = (req, res, next)=>{
     res.render("admin/add-product", {pageTitle: "Add Product", path: "/add-product"});
@@ -34,6 +35,12 @@ exports.saveEditedProduct = (req, res, next)=>{
     const prodId = req.params.productId
     const product = {name: req.body.name, description: req.body.description, price: req.body.price, image: req.body.image, id: req.body.productId}
     Products.saveUpdatedProduct(prodId, product)
-    console.log(prodId)
+    res.redirect("/admin/products")
+}
+
+exports.deleteProduct = (req, res, next)=>{
+    deleteProduct = req.query.delete
+    const prodId = req.body.productId
+    Products.deleteProduct(prodId)
     res.redirect("/admin/products")
 }
