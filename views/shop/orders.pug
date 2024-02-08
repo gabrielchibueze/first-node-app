@@ -1,0 +1,25 @@
+extends ../layout/layout.pug
+
+block styles 
+    link(rel="stylesheet", href="/css/product.css")
+block content
+    if(prod.length > 0)
+
+        div.product__main
+            .order-top
+                h1 My Orders
+                h4.total-price Total order amount: £#{totalPrice}
+            div.all__cart
+                each product in prod
+                    a(href=`/products/${product.id}`)
+                        div(class="cart__details order__details")
+                            img.cart__img(src=product.image)
+                            div.cart__desccription 
+                                h3.cart__title #{product.name}
+                                div.cart__offers
+                                    h4.cart__price £#{product.price}
+                                    h4 ||
+                                    //- h4.cart__price Qty: #{product.cartItem.quantity}
+    else 
+        main.shop-body
+            h1 No ordered products

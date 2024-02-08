@@ -6,7 +6,6 @@ router.get("/add-product", productController.getAddProduct);
 
 router.post("/add-product", productController.postAddProduct)
 router.get("/products", productController.getProductList)
-router.get("/orders", productController.getOrders)
 router.get("/edit-product/:productId", productController.editProduct)
 router.post("/save-edited-product/:productId", productController.saveEditedProduct)
 router.post("/delete-product", productController.deleteProduct)

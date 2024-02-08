@@ -3,7 +3,6 @@
     margin: 2.5rem;
 }
 
-
 .all__products{
     display: flex;
     flex-wrap: wrap;
@@ -17,7 +16,6 @@
     width: 320px;
     height: 450px;
     border: 3px solid grey;
-    /* gap: 0.4rem; */
     border-radius: 0.5rem;
 }
 .product__title{
@@ -28,7 +26,6 @@
     width: 80%;
     height: 220px;
     margin: 0px auto 0.3rem auto;
-
 }
 .product__offers{
     display: flex;
@@ -54,7 +51,6 @@
     color: aliceblue;
     cursor: pointer;
     margin: 0px;
-
 }
 
 .product__add-to-cart:hover, .place-order:hover{
@@ -65,7 +61,12 @@ color: blueviolet;
 .product__main {
     display: flex;
     flex-direction: column;
-    margin-left: 2rem;
+    margin: 0px 1rem;
+}
+@media(min-width: 499px){
+    .all__products{
+        margin: 0px 2rem;
+    }
 }
 
 .edit__delete, .details__add-to-cart {
@@ -78,36 +79,40 @@ color: blueviolet;
 .all__cart{
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
+    width: 100%;
     margin-bottom: 2rem;
 }
 .cart__details{
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     height: 100px;
-    gap: 1rem;
+    gap: 0.5rem;
     justify-content: space-between;
     border: 3px solid grey;
-    /* gap: 0.4rem; */
     border-radius: 0.5rem;
     padding: 1rem;
-    padding-right: 1.5rem;
 
 }
-@media(min-width: 400px){
+@media(min-width: 699px){
     .cart__details{
-        width: 450px;
+        width: 500px;
     }
 }
 .cart__desccription{
     justify-items: left;
 }
 
-.place-order, .total-price{
+.total-price{
     height: fit-content;
     align-self: center;
-
+}
+.place-order-form{
+    display: flex;
+}
+.place-order{
+    margin: 0px auto;
 }
 h3 {
     margin: 0px;
@@ -120,7 +125,6 @@ h3 {
 .cart__img{
     margin: 0px;
     padding: 0px;
-    align-self: center;
     width: 100px;
 }
 .indexOf{
@@ -133,4 +137,18 @@ h3 {
     display: flex;
     gap: 0.5rem;
     flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.order-top{
+    display: flex;
+    justify-content: space-between;
+}
+.order__details{
+    height: 70px;
+    margin-bottom: 1rem;
+    width: 350px;
+}
+a{
+    text-decoration: none;
 }

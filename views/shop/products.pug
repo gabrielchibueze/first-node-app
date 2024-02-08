@@ -20,9 +20,8 @@ block content
                                 a(href=`/products/${product.id}`)
                                     button.product__add-to-cart Details
                                 form(action="/shop-add-to-cart" method="post") 
-                                    a(href="#") 
-                                        button.product__add-to-cart Add to cart
-                                        input(type="hidden", name="productId", value=`${product.id}`)
+                                    button.product__add-to-cart Add to cart
+                                    input(type="hidden", name="productId", value=`${product.id}`)
 
     else 
         main.shop-body

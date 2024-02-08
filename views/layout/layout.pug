@@ -9,18 +9,18 @@ html(lang="en")
 
     body
         header.main-header
-            ul.header-list
-                li.header-list-items
+            .header-list
+                p.header-list-items
                     a(href="/", class=(path==="/" ? "active" : "")) Shop
-                li.header-list-items
+                .header-list-items
                     a(href=(path==="/cart" ? "#" : "/cart"), class=(path==="/cart" ? "active" : "")) Cart
+                p.header-list-items
+                    a(href=(path==="/orders" ? "#" : "/orders"), class=(path==="/admin/orders" ? "active" : "")) Orders
                 p ||
-                li.header-list-items
+                p.header-list-items
                     a(href="/admin/products", class=(path==="/admin/products" ? "active" : "")) Products
-                li.header-list-items
+                p.header-list-items
                     a(href=(path==="/add-product" ? "#" : "/admin/add-product"), class=(path==="/add-product" ? "active" : "")) Add Product
-                li.header-list-items
-                    a(href=(path==="/orders" ? "#" : "/admin/orders"), class=(path==="/admin/orders" ? "active" : "")) Orders
 
 
 
