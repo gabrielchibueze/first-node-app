@@ -7,7 +7,9 @@ const OrderItem = sequelize.define("orderItem", {
         primaryKey: true,
         allowNull: false,
         autoIncrement: true,
-    }
+    },
+    quantity: Sequelize.INTEGER,
+    totalPrice: Sequelize.DOUBLE
 })
 
 module.exports = OrderItem

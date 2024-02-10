@@ -10,16 +10,16 @@ block content
                 h1 My Orders
                 h4.total-price Total order amount: £#{totalPrice}
             div.all__cart
-                each product in prod
-                    a(href=`/products/${product.id}`)
+                each orders in prod
                         div(class="cart__details order__details")
-                            img.cart__img(src=product.image)
-                            div.cart__desccription 
-                                h3.cart__title #{product.name}
+                            p #{orders.id}
+                            each product in orders.products
                                 div.cart__offers
-                                    h4.cart__price £#{product.price}
-                                    h4 ||
-                                    //- h4.cart__price Qty: #{product.cartItem.quantity}
+                                    p.cart__title #{product.name}
+                                    p.cart__price Qty: #{product.orderItem.quantity}
+                                p ||
+
+                                    
     else 
         main.shop-body
             h1 No ordered products

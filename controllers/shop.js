@@ -65,39 +65,39 @@ exports.removeCart = (req, res, next)=>{
 }
 
 exports.placeOrder = (req, res, next)=>{
+    let fetchedCart
     req.user.getCart().then(cart =>{
+        fetchedCart = cart
         return cart.getProducts()
     }).then(products =>{
         return req.user.createOrder().then(order =>{
-            return order.addProducts(
-                products.map((product)=>{
-                   product.orderItem = { quantity: product.cartItem.quantity }
-                   return product
+           return order.addProducts(
+                products.map(product=>{
+                   product.orderItem = { quantity: product.cartItem.quantity, totalPrice: product.price * product.cartItem.quantity };
+                   return product;
                 })
             )
         }).catch(err => console.log(err))
-    }).then(order =>{
-        res.redirect("/orders")
+    }).then(result =>{
+        fetchedCart.setProducts(null)
+    }).then(result =>{
+        res.redirect("/orders").catch(err => console.log(err))
     }).catch(err => console.log(err))
 }
 
 exports.getOrders = (req, res, next)=>{
-    req.user.getOrders().then(orders =>{
-        // console.log()
-        req.user.getProducts().then(products =>{
-            let orderedItems = []
-            for(let order of orders){
-                const filteredProducts = products.filter((product, index) => product.id === order.id)
-                orderedItems.push(filteredProducts)
-            }
-            console.log(orderedItems.flat())
-            return orderedItems.flat()
-        }).then(products =>{
-            orderTotalPrice = products.reduce((total, current)=>{
-                return total + current.price
-            },0)
-            res.render("shop/orders", {prod: products, totalPrice: orderTotalPrice, path: "/admin/orders", pageTitle: "Your Orders"} )
-        })
+    req.user.getOrders({include: ["products"]}).then(orders =>{
+    const currentOrderTotalPrice = orders.map(order => {
+        return order.products.reduce((total, current)=>{
+            return total + current.orderItem.totalPrice
+        }, 0)
+    })
+    
+    const allOrderTotalPrice = currentOrderTotalPrice.reduce((total, current)=>{
+        return total + current
+    }, 0)
+
+    res.render("shop/orders", {prod: orders, totalPrice: allOrderTotalPrice, path: "/admin/orders", pageTitle: "Your Orders"} )
     }).catch(err => console.log(err))
 
 }
