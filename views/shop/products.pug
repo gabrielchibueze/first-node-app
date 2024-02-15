@@ -12,16 +12,16 @@ block content
                 each product in prods
                     div.product__details
                         h2.product__title #{product.name}
-                        img.product__img(src=product.image)
+                        img.product__img(src=product.imageUrl)
                         div.product__offers
                             h3.product__price £#{product.price}
                             p.product__desc #{product.description}
                             div.details__add-to-cart 
-                                a(href=`/products/${product.id}`)
+                                a(href=`/products/${product._id}`)
                                     button.product__add-to-cart Details
                                 form(action="/shop-add-to-cart" method="post") 
                                     button.product__add-to-cart Add to cart
-                                    input(type="hidden", name="productId", value=`${product.id}`)
+                                    input(type="hidden", name="productId", value=`${product._id}`)
 
     else 
         main.shop-body

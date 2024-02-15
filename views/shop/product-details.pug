@@ -9,11 +9,11 @@ block content
             div.all__products
                     div.product__details
                         h2.product__title #{prods.name}
-                        img.product__img(src=prods.image)
+                        img.product__img(src=prods.imageUrl)
                         div.product__offers
                             h3.product__price £#{prods.price}
                             p.product__desc #{prods.description}
                             form(action="/add-to-cart" method="post") 
                                 a(href="add-to-cart") 
                                     button.product__add-to-cart Add to cart
-                                    input(type="hidden", name="productId", value=`${prods.id}`)
+                                    input(type="hidden", name="productId", value=`${prods._id}`)

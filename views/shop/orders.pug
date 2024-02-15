@@ -12,13 +12,13 @@ block content
             div.all__cart
                 each orders in prod
                         div(class="cart__details order__details")
-                            p #{orders.id}
+                            p ##{orders._id}
                             each product in orders.products
                                 div.cart__offers
                                     p.cart__title #{product.name}
                                     p.cart__price Qty: #{product.orderItem.quantity}
                                 p ||
-
+                                p #{p}
                                     
     else 
         main.shop-body

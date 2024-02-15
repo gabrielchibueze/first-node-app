@@ -11,7 +11,7 @@ block content
                 each product in prods
                     div.product__details
                         h2.product__title #{product.name}
-                        img.product__img(src=product.image)
+                        img.product__img(src=product.imageUrl)
                         div.product__offers
                             h3.product__price £#{product.price}
                             p.product__desc #{product.description}

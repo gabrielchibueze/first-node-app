@@ -6,7 +6,7 @@ block styles
 
 block content 
     main.product-body
-        form.add-product-form(action=`/admin/save-edited-product/${prods.id}` method="POST")
+        form.add-product-form(action=`/admin/save-edited-product/${prods._id}` method="POST")
             h3 Edit this Product
             label(for="name" type="text") Product Name
             input.add-product-entry(type="text"  name="name" required id="name" value=`${prods.name}`)
@@ -14,8 +14,8 @@ block content
             textarea.product__description(name="description" placeholder="Describe the product" required id="description"  cols="30" rows="10" maxLength="120") #{prods.description} 
             label(for="price" type="text") Product Price
             input.add-product-entry(type="text"  required name="price" id="price" step="0.01" value=`${prods.price}`)
-            label(for="image" type="text") Product Image Url
-            input.add-product-entry(type="text" required name="image" id="image" value=`${prods.image}`)
+            label(for="imageUrl" type="text") Product Image Url
+            input.add-product-entry(type="text" required name="imageUrl" id="imageUrl" value=`${prods.imageUrl}`)
             a(href="/admin/save-edited-product")
                 button.add-product-btn Save Changes
-            input(type="hidden", value=`${prods.id}`, name="productId")
+            input(type="hidden", value=`${prods._id}`, name="productId")

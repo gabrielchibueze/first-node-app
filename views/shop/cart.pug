@@ -10,18 +10,18 @@ block content
             div.all__cart
                 each product in prod
                     div.cart__details
-                        img.cart__img(src=product.image)
+                        img.cart__img(src=product.imageUrl)
                         div.cart__desccription 
                             h3.cart__title #{product.name}
                             div.cart__offers
-                                h4.cart__price £#{product.price}
+                                h4.cart__price £#{product.ice}
                                 h4 ||
-                                h4.cart__price Qty: #{product.cartItem.quantity}
+                                h4.cart__price Qty: #{product.quantity}
                         div.detail__order 
-                            a(href=`/products/${product.id}`)
+                            a(href=`/products/${product._id}`)
                                 button.product__add-to-cart View details
-                            form(action=`/remove-cart/${product.id}` method="post") 
-                                input(type="hidden", name="productId" value=`${product.id}`)
+                            form(action=`/remove-cart/${product._id}` method="post") 
+                                input(type="hidden", name="productId" value=`${product._id}`)
                                 a(href="/remove-cart")
                                     button.product__add-to-cart(type="submit") Remove
             h4.total-price Total Price: £#{totalPrice}

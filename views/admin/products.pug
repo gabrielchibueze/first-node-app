@@ -13,22 +13,22 @@ block content
                 each product in prods
                     div.product__details
                         h2.product__title #{product.name}
-                        img.product__img(src=product.image)
+                        img.product__img(src=product.imageUrl)
                         div.product__offers
                             h3.product__price £#{product.price}
                             p.product__desc #{product.description}
                             div.edit__delete 
-                                a(href=`/admin/edit-product/${product.id}`)
+                                a(href=`/admin/edit-product/${product._id}`)
                                     button.product__add-to-cart Edit
                                     
                                 form(action=`/admin/delete-product`, method="post") 
-                                    input(type="hidden", name="productId", value=`${product.id}`)
+                                    input(type="hidden", name="productId", value=`${product._id}`)
                                     button.product__add-to-cart(type="submit") Delete
                                     
                             if(product.isDelete)                         
                                 div.delete-prompt
                                     p Are you sure you want to delete this product ?
-                                    form(action=`/admin/delete/${product.id}`, method="post") 
+                                    form(action=`/admin/delete/${product._id}`, method="post") 
                                     div.edit__delete 
                                         button.product__add-to-cart(type="submit") Yes 
                                         button.product__add-to-cart() No
